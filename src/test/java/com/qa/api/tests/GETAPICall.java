@@ -17,8 +17,8 @@ public class GETAPICall {
     @Test
     public void getUserApiTest() throws IOException {
 
-        Playwright playwrigt = Playwright.create();
-        APIRequest request = playwrigt.request();
+        Playwright playwright = Playwright.create();
+        APIRequest request = playwright.request();
         APIRequestContext requestContext = request.newContext();
         APIResponse apiResponse = requestContext.get("https://gorest.co.in/public/v2/users");
 
