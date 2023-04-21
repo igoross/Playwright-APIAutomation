@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class GETAPICall {
 
@@ -31,11 +32,21 @@ public class GETAPICall {
         System.out.println(statusText);
 
 //        Catch body
+        System.out.println("---print api response----");
         apiResponse.body();
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonResponse = objectMapper.readTree(apiResponse.body());
         String jsonPrettyResponse = jsonResponse.toPrettyString();
         System.out.println(jsonPrettyResponse);
+
+        System.out.println("---print api url----");
+        System.out.println(apiResponse.url());
+
+        System.out.println("---print api headers----");
+        Map<String, String> headersMap = apiResponse.headers();
+        System.out.println(headersMap);
+        Assert.assertEquals(headersMap.get("content-type"), "application/json; charset=utf-8");
+
 
 
     }
